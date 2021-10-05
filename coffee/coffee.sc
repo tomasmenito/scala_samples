@@ -1,15 +1,16 @@
-class CreditCard {
-  def charge(price: Int) = { println("charging" + price) }
-}
+class CreditCard {}
 
 class Coffee(var price: Int = 1) {}
 
+class Payments {
+  def charge(cc: CreditCard, price: Int) = { println("charging" + price) }
+}
 class Cafe {
-  def buyCoffee(cc: CreditCard): Coffee = {
+  def buyCoffee(cc: CreditCard, p: Payments): Coffee = {
     val cup = new Coffee()
-    cc.charge(cup.price)
+    p.charge(cc, cup.price)
     cup
   }
 }
 
-new Cafe().buyCoffee(new CreditCard())
+new Cafe().buyCoffee(new CreditCard(), new Payments())
