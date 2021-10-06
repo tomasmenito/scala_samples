@@ -18,4 +18,10 @@ object List {
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
 
+  def tail[A](l: List[A]): List[A] = {
+    l match {
+      case Nil           => sys.error("empty list has no tail")
+      case Cons(_, tail) => tail
+    }
+  }
 }
