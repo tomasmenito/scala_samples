@@ -18,10 +18,11 @@ object List {
     if (as.isEmpty) Nil
     else Cons(as.head, apply(as.tail: _*))
 
-  def tail[A](l: List[A]): List[A] = {
+  def drop[A](l: List[A], n: Int): List[A] = {
+    if (n == 0) l
     l match {
       case Nil           => sys.error("empty list has no tail")
-      case Cons(_, tail) => tail
+      case Cons(_, tail) => drop(tail, n - 1)
     }
   }
 
