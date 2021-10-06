@@ -24,4 +24,7 @@ object List {
       case Cons(_, tail) => tail
     }
   }
+
+  def setHead(h: A, l: List[A]): List[A] =
+    Cons(h, tail(l))
 }
