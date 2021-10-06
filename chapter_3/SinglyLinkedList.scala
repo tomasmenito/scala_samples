@@ -25,6 +25,8 @@ object List {
     }
   }
 
-  def setHead(h: A, l: List[A]): List[A] =
-    Cons(h, tail(l))
+  def setHead[A](h: A, l: List[A]): List[A] = l match {
+    case Nil           => sys.error("empty list")
+    case Cons(_, tail) => Cons(h, tail)
+  }
 }
